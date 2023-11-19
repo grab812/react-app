@@ -22,7 +22,7 @@ const router = createBrowserRouter([
         element: <Coins/>,
     },
     {
-        path:`${process.env.PUBLIC_URL}/coins/:coinId`,
+        path:`${process.env.PUBLIC_URL}/coins/:coinId/*`,
         element: <CoinDetail/>
     },
     {
