@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.js": "/react-master/static/js/main.c6228211.js",
+    "main.js": "/react-master/static/js/main.d273ce68.js",
     "static/media/Spinner-1s-200px.svg": "/react-master/static/media/Spinner-1s-200px.4205494c3a2bdfc9fa478ff652fc1587.svg",
     "index.html": "/react-master/index.html",
-    "main.c6228211.js.map": "/react-master/static/js/main.c6228211.js.map"
+    "main.d273ce68.js.map": "/react-master/static/js/main.d273ce68.js.map"
   },
   "entrypoints": [
-    "static/js/main.c6228211.js"
+    "static/js/main.d273ce68.js"
   ]
 }
