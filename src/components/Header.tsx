@@ -39,9 +39,9 @@ const Nav = styled.li`
 function Header(){
     return(
         <NavList>
-            <Nav><Link to="/about">About</Link></Nav>
-            <Nav><Link to="/coins">Coins</Link></Nav>
-            <Nav><Link to="/home">Home</Link></Nav>
+            <Nav><Link to={`${process.env.PUBLIC_URL}/about`}>About</Link></Nav>
+            <Nav><Link to={`${process.env.PUBLIC_URL}/coins`}>Coins</Link></Nav>
+            <Nav><Link to={`${process.env.PUBLIC_URL}/home`}>Home</Link></Nav>
         </NavList>
     )
 }

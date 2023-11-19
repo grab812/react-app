@@ -9,32 +9,32 @@ import CoinDetail from "./screens/coins/CoinDetail";
 import Followers from "./screens/users/Followers";
 const router = createBrowserRouter([
     {
-        path: "",
+        path: `${process.env.PUBLIC_URL}`,
         element: <Root/>,
         errorElement: <NotFound/>
     },
     {
-        path: "/about",
+        path: `${process.env.PUBLIC_URL}/about`,
         element: <About/>,
     },
     {
-        path:"/coins",
+        path:`${process.env.PUBLIC_URL}/coins`,
         element: <Coins/>,
     },
     {
-        path:'coins/:coinId',
+        path:`${process.env.PUBLIC_URL}/coins/:coinId`,
         element: <CoinDetail/>
     },
     {
-        path: "/home",
+        path: `${process.env.PUBLIC_URL}/home`,
         element: <Home/>,
     },
     {
-        path: "/users/:userId",
+        path: `${process.env.PUBLIC_URL}/users/:userId`,
         element: <User/>,
         children:[
             {
-                path:"followers",
+                path:`followers`,
                 element:<Followers/>
             }
         ]
