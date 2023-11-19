@@ -18,7 +18,8 @@ const Title = styled.h1`
   color: ${(props) => props.theme.accentColor};
 `;
 function CoinDetail(){
-    const [loading, setLoading] = useState(true);
+    // eslint-disable-next-line
+    const [loading, setLoading] = useState(true);   
     const { coinId } = useParams();
     const { state } = useLocation();
     console.log('state', state);
