@@ -8,34 +8,46 @@ import Coins from "./screens/coins/Coins";
 import CoinDetail from "./screens/coins/CoinDetail";
 import Followers from "./screens/users/Followers";
 import Movies from "./screens/Movies";
+import Price from "./screens/coins/Price";
+import Chart from "./screens/coins/Chart";
 const router = createBrowserRouter([
   {
-    path: `${process.env.PUBLIC_URL}`,
+    path: ``,
     element: <Root />,
     errorElement: <NotFound />,
   },
   {
-    path: `${process.env.PUBLIC_URL}/about`,
+    path: `/about`,
     element: <About />,
   },
   {
-    path: `${process.env.PUBLIC_URL}/movies`,
+    path: `/movies`,
     element: <Movies />,
   },
   {
-    path: `${process.env.PUBLIC_URL}/coins`,
+    path: `/coins`,
     element: <Coins />,
   },
   {
-    path: `${process.env.PUBLIC_URL}/coins/:coinId/*`,
+    path: `/coins/:coinId/*`,
     element: <CoinDetail />,
+    children: [
+        {
+            path:`price`,
+            element: <Price/>
+        },
+        {
+            path:`chart`,
+            element: <Chart/>
+        }
+    ]
   },
   {
-    path: `${process.env.PUBLIC_URL}/home`,
+    path: `/home`,
     element: <Home />,
   },
   {
-    path: `${process.env.PUBLIC_URL}/users/:userId`,
+    path: `/users/:userId`,
     element: <User />,
     children: [
       {
@@ -45,4 +57,51 @@ const router = createBrowserRouter([
     ],
   },
 ]);
+// const router = createBrowserRouter([
+//     {
+//       path: `${process.env.PUBLIC_URL}`,
+//       element: <Root />,
+//       errorElement: <NotFound />,
+//     },
+//     {
+//       path: `${process.env.PUBLIC_URL}/about`,
+//       element: <About />,
+//     },
+//     {
+//       path: `${process.env.PUBLIC_URL}/movies`,
+//       element: <Movies />,
+//     },
+//     {
+//       path: `${process.env.PUBLIC_URL}/coins`,
+//       element: <Coins />,
+//     },
+//     {
+//       path: `${process.env.PUBLIC_URL}/coins/:coinId/*`,
+//       element: <CoinDetail />,
+//       children: [
+//           {
+//               path:`price`,
+//               element: <Price/>
+//           },
+//           {
+//               path:`chart`,
+//               element: <Chart/>
+//           }
+//       ]
+//     },
+//     {
+//       path: `${process.env.PUBLIC_URL}/home`,
+//       element: <Home />,
+//     },
+//     {
+//       path: `${process.env.PUBLIC_URL}/users/:userId`,
+//       element: <User />,
+//       children: [
+//         {
+//           path: `followers`,
+//           element: <Followers />,
+//         },
+//       ],
+//     },
+//   ]);
 export default router;

@@ -106,7 +106,7 @@ function Header() {
             a better version of...
           </InfoDetail>
           <InfoMore>
-            <Link to={`${process.env.PUBLIC_URL}/about`}>About</Link>
+            <Link to={`/coins`}>Coins</Link>
           </InfoMore>
         </Info>
       </Nav>
@@ -122,7 +122,7 @@ function Header() {
             a better version of...
           </InfoDetail>
           <InfoMore>
-            <Link to={`${process.env.PUBLIC_URL}/movies`}>Movies</Link>
+            <Link to={`/movies`}>Movies</Link>
           </InfoMore>
         </Info>
       </Nav>
@@ -138,7 +138,7 @@ function Header() {
             a better version of...
           </InfoDetail>
           <InfoMore>
-            <Link to={`${process.env.PUBLIC_URL}/home`}>Home</Link>
+            <Link to={`/home`}>Home</Link>
           </InfoMore>
         </Info>
       </Nav>
@@ -153,7 +153,7 @@ function Header() {
             projects directly with my clients.
           </InfoDetail>
           <InfoMore>
-            <Link to={`${process.env.PUBLIC_URL}/home`}>Home</Link>
+            <Link to={`/home`}>Home</Link>
           </InfoMore>
         </Info>
       </Nav>
