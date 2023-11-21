@@ -34,6 +34,13 @@ const InfoTitle = styled.h2`
   text-transform: uppercase;
   text-shadow: 0 0 0px #32577f;
 `;
+const InfoSubTitle = styled.h3`
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  color: rgba(21, 37, 54, 0.7);
+  font-family: "Grotesque", sans-serif;
+`;
 const InfoSeats = styled.h3`
   display: inline-block;
   margin-bottom: 24px;
@@ -51,6 +58,21 @@ const InfoDetail = styled.p`
   opacity: 0;
   transition: 0.5s 0.25s cubic-bezier(0.17, 0.67, 0.5, 1.03);
 `;
+const InfoMore = styled.strong`
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translate3d(-50%, -27px, 0);
+  padding: 20px 24px;
+  letter-spacing: 1px;
+  color: ${(props) => props.theme.accentColor};
+  font-family: "Grotesque Black", sans-serif;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  opacity: 0;
+  transition: 0.5s 0.25s cubic-bezier(0.17, 0.67, 0.5, 1.03);
+`;
 const Nav = styled.li`
   position: relative;
   width: 350px;
@@ -63,7 +85,7 @@ const Nav = styled.li`
     box-shadow: 0px 0px 5px 5px rgba(255, 255, 255, 0.2);
     ${Info} {
       transform: translateY(-260px);
-      ${InfoSeats}, ${InfoDetail} {
+      ${InfoSeats}, ${InfoDetail}, ${InfoMore} {
         opacity: 1;
       }
     }
@@ -76,23 +98,64 @@ function Header() {
         <Thumb />
         <Info>
           <InfoTitle>암호화폐 시세 트래커</InfoTitle>
+          <InfoSubTitle>Coin price tracker</InfoSubTitle>
           <InfoSeats>seats remaining: 2</InfoSeats>
           <InfoDetail>
             Join us for our Live Infinity Session in beautiful New York City.
             This is a 3 day intensive workshop where you'll learn how to become
             a better version of...
           </InfoDetail>
+          <InfoMore>
+            <Link to={`${process.env.PUBLIC_URL}/about`}>About</Link>
+          </InfoMore>
         </Info>
-        <Link to={`${process.env.PUBLIC_URL}/about`}>About</Link>
       </Nav>
       <Nav>
-        <Link to={`${process.env.PUBLIC_URL}/movies`}>Movies</Link>
+        <Thumb />
+        <Info>
+          <InfoTitle>넷플릭스 클론</InfoTitle>
+          <InfoSubTitle>Netflix clone</InfoSubTitle>
+          <InfoSeats>seats remaining: 7</InfoSeats>
+          <InfoDetail>
+            Join us for our Live Infinity Session in beautiful New York City.
+            This is a 3 day intensive workshop where you'll learn how to become
+            a better version of...
+          </InfoDetail>
+          <InfoMore>
+            <Link to={`${process.env.PUBLIC_URL}/movies`}>Movies</Link>
+          </InfoMore>
+        </Info>
       </Nav>
       <Nav>
-        <Link to={`${process.env.PUBLIC_URL}/coins`}>Coins</Link>
+        <Thumb />
+        <Info>
+          <InfoTitle>트렐로 클론</InfoTitle>
+          <InfoSubTitle>Trello clone</InfoSubTitle>
+          <InfoSeats>seats remaining: 3</InfoSeats>
+          <InfoDetail>
+            Join us for our Live Infinity Session in beautiful New York City.
+            This is a 3 day intensive workshop where you'll learn how to become
+            a better version of...
+          </InfoDetail>
+          <InfoMore>
+            <Link to={`${process.env.PUBLIC_URL}/home`}>Home</Link>
+          </InfoMore>
+        </Info>
       </Nav>
       <Nav>
-        <Link to={`${process.env.PUBLIC_URL}/home`}>Home</Link>
+        <Thumb />
+        <Info>
+          <InfoTitle>Contact</InfoTitle>
+          <InfoSeats> Contact our sales team</InfoSeats>
+          <InfoDetail>
+            If you’d like to know more about my work or process feel free to get
+            in touch. I work from my studio in East London and manage all my
+            projects directly with my clients.
+          </InfoDetail>
+          <InfoMore>
+            <Link to={`${process.env.PUBLIC_URL}/home`}>Home</Link>
+          </InfoMore>
+        </Info>
       </Nav>
     </NavList>
   );
