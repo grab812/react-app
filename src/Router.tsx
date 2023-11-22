@@ -10,44 +10,54 @@ import Followers from "./screens/users/Followers";
 import Movies from "./screens/Movies";
 import Price from "./screens/coins/Price";
 import Chart from "./screens/coins/Chart";
+import Trello from "./screens/trello/Trello";
+import Contact from "./screens/Contact";
 const router = createBrowserRouter([
   {
-    path: ``,
+    path: `${process.env.PUBLIC_URL}`,
     element: <Root />,
     errorElement: <NotFound />,
   },
   {
-    path: `/about`,
+    path: `${process.env.PUBLIC_URL}/about`,
     element: <About />,
   },
   {
-    path: `/movies`,
-    element: <Movies />,
-  },
-  {
-    path: `/coins`,
+    path: `${process.env.PUBLIC_URL}/coins`,
     element: <Coins />,
   },
   {
-    path: `/coins/:coinId/*`,
+    path: `${process.env.PUBLIC_URL}/coins/:coinId/*`,
     element: <CoinDetail />,
     children: [
-        {
-            path:`price`,
-            element: <Price/>
-        },
-        {
-            path:`chart`,
-            element: <Chart/>
-        }
-    ]
+      {
+        path: `price`,
+        element: <Price />,
+      },
+      {
+        path: `chart`,
+        element: <Chart />,
+      },
+    ],
   },
   {
-    path: `/home`,
+    path: `${process.env.PUBLIC_URL}/movies`,
+    element: <Movies />,
+  },
+  {
+    path: `${process.env.PUBLIC_URL}/trello`,
+    element: <Trello />,
+  },
+  {
+    path: `${process.env.PUBLIC_URL}/contact`,
+    element: <Contact />,
+  },
+  {
+    path: `${process.env.PUBLIC_URL}/home`,
     element: <Home />,
   },
   {
-    path: `/users/:userId`,
+    path: `${process.env.PUBLIC_URL}/users/:userId`,
     element: <User />,
     children: [
       {

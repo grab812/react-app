@@ -1,5 +1,9 @@
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import BgCoin from "../assets/home_bg_bitcoins.jpg";
+import BgNetflix from "../assets/home_bg_netflix.jpg";
+import BgTrello from "../assets/home_bg_trello.jpg";
+import BgContact from "../assets/home_bg_contact.jpg";
 const NavList = styled.ul`
   width: 100%;
   display: flex;
@@ -11,8 +15,7 @@ const NavList = styled.ul`
 const Thumb = styled.div`
   width: auto;
   height: 260px;
-  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/397014/new-york-city.png)
-    no-repeat center;
+  background: url(${BgCoin}) no-repeat center;
   background-size: cover;
   border-radius: 3px;
 `;
@@ -73,6 +76,20 @@ const InfoMore = styled.strong`
   opacity: 0;
   transition: 0.5s 0.25s cubic-bezier(0.17, 0.67, 0.5, 1.03);
 `;
+function createcss() {
+  let styles = "";
+
+  for (let i = 0; i < 5; i += 1) {
+    styles += `
+        &:nth-child(${i}) ${Thumb} {
+            background-image: url("${process.env.PUBLIC_URL}/assets/home_bg_${i}.jpg");
+        }
+       `;
+  }
+  return css`
+    ${styles}
+  `;
+}
 const Nav = styled.li`
   position: relative;
   width: 350px;
@@ -90,7 +107,17 @@ const Nav = styled.li`
       }
     }
   }
+  &:nth-child(2) ${Thumb} {
+    background-image: url(${BgNetflix});
+  }
+  &:nth-child(3) ${Thumb} {
+    background-image: url(${BgTrello});
+  }
+  &:nth-child(4) ${Thumb} {
+    background-image: url(${BgContact});
+  }
 `;
+// ${createcss()};
 function Header() {
   return (
     <NavList>
@@ -106,7 +133,7 @@ function Header() {
             a better version of...
           </InfoDetail>
           <InfoMore>
-            <Link to={`/coins`}>Coins</Link>
+            <Link to={`${process.env.PUBLIC_URL}/coins`}>Coins</Link>
           </InfoMore>
         </Info>
       </Nav>
@@ -122,7 +149,7 @@ function Header() {
             a better version of...
           </InfoDetail>
           <InfoMore>
-            <Link to={`/movies`}>Movies</Link>
+            <Link to={`${process.env.PUBLIC_URL}/movies`}>Movies</Link>
           </InfoMore>
         </Info>
       </Nav>
@@ -138,7 +165,7 @@ function Header() {
             a better version of...
           </InfoDetail>
           <InfoMore>
-            <Link to={`/home`}>Home</Link>
+            <Link to={`${process.env.PUBLIC_URL}/trello`}>Trello</Link>
           </InfoMore>
         </Info>
       </Nav>
@@ -153,7 +180,7 @@ function Header() {
             projects directly with my clients.
           </InfoDetail>
           <InfoMore>
-            <Link to={`/home`}>Home</Link>
+            <Link to={`${process.env.PUBLIC_URL}/contact`}>Contact</Link>
           </InfoMore>
         </Info>
       </Nav>
