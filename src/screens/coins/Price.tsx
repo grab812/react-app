@@ -1,4 +1,17 @@
+import {Helmet} from "react-helmet";
+import { useOutletContext } from "react-router";
+interface priceProps{
+    coinId: string;
+}
 function Price(){
-    return <h1>Price</h1>
+    const { coinId } = useOutletContext<priceProps>();
+    return (
+        <>
+            <Helmet>
+                <title>{coinId} Price</title>
+            </Helmet>
+            <h1>Price</h1>
+        </>
+    )
 }
 export default Price;

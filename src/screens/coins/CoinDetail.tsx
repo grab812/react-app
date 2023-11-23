@@ -1,10 +1,11 @@
-import { Outlet, PathMatch, useLocation, useParams } from "react-router-dom";
+import { Outlet, useLocation, useParams } from "react-router-dom";
+import {Helmet} from "react-helmet";
 import styled from "styled-components";
 import Loading from "../../components/Loading";
-import { useEffect, useState } from "react";
 import { Link, useMatch } from "react-router-dom";
 import { useQuery } from "react-query";
 import { fetchCoinInfo, fetchCoinPrice } from "../../api";
+
 const Tabs = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -142,11 +143,19 @@ function CoinDetail() {
   );
   const { isLoading: priceLoading, data: priceData } = useQuery(
     ["price", coinId],
-    () => fetchCoinPrice(coinId!)
+    () => fetchCoinPrice(coinId!),
+    {
+        refetchInterval: 5000,
+    }
   );
   const loading = infoLoading || priceLoading;
   return (
     <Container>
+        <Helmet>
+            <title>
+            {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
+            </title>
+        </Helmet>
       <Header>
         <Title>
           {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
@@ -166,8 +175,8 @@ function CoinDetail() {
               <span>${infoData?.symbol}</span>
             </OverviewItem>
             <OverviewItem>
-              <span>Open Source:</span>
-              <span>{infoData?.open_source ? "Yes" : "No"}</span>
+              <span>Price:</span>
+              <span>{priceData?.quotes.USD.price.toFixed(3)}</span>
             </OverviewItem>
           </Overview>
           <Description>{infoData?.description}</Description>
