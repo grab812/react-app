@@ -1,5 +1,5 @@
 import { Outlet, useLocation, useParams } from "react-router-dom";
-import {Helmet} from "react-helmet";
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 import styled from "styled-components";
 import Loading from "../../components/Loading";
 import { Link, useMatch } from "react-router-dom";
@@ -18,7 +18,7 @@ const Tab = styled.span<{ isActive: boolean }>`
   text-transform: uppercase;
   font-size: 12px;
   font-weight: 400;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: ${(props) => props.theme.detailBgColor};
   padding: 7px 0px;
   border-radius: 10px;
   color: ${(props) =>
@@ -30,7 +30,7 @@ const Tab = styled.span<{ isActive: boolean }>`
 const Overview = styled.div`
   display: flex;
   justify-content: space-between;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: ${(props) => props.theme.detailBgColor};
   padding: 10px 20px;
   border-radius: 10px;
 `;
@@ -151,11 +151,13 @@ function CoinDetail() {
   const loading = infoLoading || priceLoading;
   return (
     <Container>
-        <Helmet>
-            <title>
-            {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
-            </title>
-        </Helmet>
+        <HelmetProvider>
+            <Helmet>
+                <title>
+                {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
+                </title>
+            </Helmet>
+        </HelmetProvider>
       <Header>
         <Title>
           {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
@@ -176,7 +178,7 @@ function CoinDetail() {
             </OverviewItem>
             <OverviewItem>
               <span>Price:</span>
-              <span>{priceData?.quotes.USD.price.toFixed(3)}</span>
+              <span>${priceData?.quotes?.USD?.price?.toFixed(3)}</span>
             </OverviewItem>
           </Overview>
           <Description>{infoData?.description}</Description>

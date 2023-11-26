@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import {Helmet} from "react-helmet";
-import { Link } from "react-router-dom";
+import { Helmet, HelmetProvider } from 'react-helmet-async';
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Loading from "../../components/Loading";
 import { useQuery } from "react-query";
@@ -12,6 +12,7 @@ const Container = styled.div`
   margin: 0 auto;
 `;
 const Header = styled.header`
+  position: relative;
   height: 15vh;
   display: flex;
   justify-content: center;
@@ -26,8 +27,9 @@ const CoinList = styled.ul`
 const Coin = styled.li`
     position: relative;
     margin-bottom: 10px;
-    background-color: white;
-    color: ${(props) => props.theme.bgColor};
+    background-color: ${(props) => props.theme.cardBgColor};
+    color: ${(props) => props.theme.textColor};
+    border: 1px solid white;
     border-radius: 10px;
     opacity: .5;
     transform: translate3d(0, 50px, 0);
@@ -72,6 +74,63 @@ interface ICoin {
     is_active: boolean;
     type: string;
 }
+const BackBtn = styled.button`
+width:30px;
+height:30px;
+position: absolute;
+top: 50%;
+left: 0;
+transform: translate(0, -50%);
+border-radius:50%;
+border: ${(props)=>props.theme.accentColor} 1px solid;
+overflow:hidden;
+transition:background 0.3s ease;
+&.back{
+  .arrow-wrap{
+    left:-50%;
+  }
+}
+&:hover{
+  background: ${(props)=>props.theme.accentColor};
+  .arrow-wrap{
+    i{
+      background:#fff;
+    }
+  }
+}
+.arrow-wrap{
+  display:block;
+  position:absolute;
+  height:70%;
+  width:70%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition:left 0.3s ease;
+  i{
+    height:1px;
+    left:0;
+    top:50%;
+    background: ${(props)=>props.theme.accentColor};
+    position:absolute;
+    display:block;
+    transition:background 0.3s ease;
+  }
+  .arrow-part-1{
+    width:100%;
+  }
+  .arrow-part-2{
+    width:60%;
+    transform: rotate(-45deg);
+    transform-origin: 0 0;
+  }
+  .arrow-part-3{
+    width:60%;
+    transform: rotate(45deg);
+    transform-origin: 0 0;
+  }
+}
+`
 function Coins(){
     // const [loading, setLoading]= useState(true);
     // const [coins, setCoins] = useState<CoinsInterface[]>([]);
@@ -79,13 +138,23 @@ function Coins(){
     //     setLoading(false)
     // },[])
     const {isLoading, data } = useQuery<ICoin[]>("allCoins", fetchCoins);
+    const navigate = useNavigate();
     return(
         <Container>
-            <Helmet>
-                <title>코인</title>
-            </Helmet>
+            <HelmetProvider>
+                <Helmet>
+                    <title>코인</title>
+                </Helmet>
+            </HelmetProvider>
             <Header>
                 <Title>코인</Title>
+                <BackBtn onClick={() => navigate(-1)}>
+                    <span className="arrow-wrap">
+                        <i className="arrow-part-1"></i>
+                        <i className="arrow-part-2"></i>
+                        <i className="arrow-part-3"></i>
+                    </span>
+                </BackBtn>
             </Header>
             {isLoading? (<Loading/>): (
                 <CoinList>

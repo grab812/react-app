@@ -12,12 +12,14 @@ import Price from "./screens/coins/Price";
 import Chart from "./screens/coins/Chart";
 import Trello from "./screens/trello/Trello";
 import Contact from "./screens/Contact";
+import Header from "./components/Header";
 const router = createBrowserRouter([
   {
     path: `${process.env.PUBLIC_URL}`,
-    element: <Root />,
+    element: <Header/>,
     errorElement: <NotFound />,
   },
+  
   {
     path: `${process.env.PUBLIC_URL}/about`,
     element: <About />,

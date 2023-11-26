@@ -4,6 +4,7 @@ import BgCoin from "../assets/home_bg_bitcoins.jpg";
 import BgNetflix from "../assets/home_bg_netflix.jpg";
 import BgTrello from "../assets/home_bg_trello.jpg";
 import BgContact from "../assets/home_bg_contact.jpg";
+import { HelmetProvider, Helmet } from "react-helmet-async";
 const NavList = styled.ul`
   width: 100%;
   display: flex;
@@ -24,14 +25,14 @@ const Info = styled.div`
   height: 350px;
   position: relative;
   padding: 14px 24px;
-  background: #fff;
+  background-color: ${(props) => props.theme.navBgColor};
   transition: 0.4s 0.15s cubic-bezier(0.17, 0.67, 0.5, 1.03);
 `;
 const InfoTitle = styled.h2`
   position: relative;
   margin: 10px 0;
   letter-spacing: 3px;
-  color: #152536;
+  color: ${(props) => props.theme.textColor};
   font-family: "Grotesque Black", sans-serif;
   font-size: 1rem;
   text-transform: uppercase;
@@ -41,7 +42,7 @@ const InfoSubTitle = styled.h3`
   margin-bottom: 10px;
   text-transform: uppercase;
   font-size: 0.85rem;
-  color: rgba(21, 37, 54, 0.7);
+  color: ${(props) => props.theme.grayColor};
   font-family: "Grotesque", sans-serif;
 `;
 const InfoSeats = styled.h3`
@@ -57,7 +58,7 @@ const InfoDetail = styled.p`
   font-family: "Merriweather", sans-serif;
   line-height: 2;
   font-size: 0.95rem;
-  color: ${(props) => props.theme.bgColor};
+  color: ${(props) => props.theme.grayColor};
   opacity: 0;
   transition: 0.5s 0.25s cubic-bezier(0.17, 0.67, 0.5, 1.03);
 `;
@@ -120,71 +121,78 @@ const Nav = styled.li`
 // ${createcss()};
 function Header() {
   return (
-    <NavList>
-      <Nav>
-        <Thumb />
-        <Info>
-          <InfoTitle>암호화폐 시세 트래커</InfoTitle>
-          <InfoSubTitle>Coin price tracker</InfoSubTitle>
-          <InfoSeats>seats remaining: 2</InfoSeats>
-          <InfoDetail>
-            Join us for our Live Infinity Session in beautiful New York City.
-            This is a 3 day intensive workshop where you'll learn how to become
-            a better version of...
-          </InfoDetail>
-          <InfoMore>
-            <Link to={`${process.env.PUBLIC_URL}/coins`}>Coins</Link>
-          </InfoMore>
-        </Info>
-      </Nav>
-      <Nav>
-        <Thumb />
-        <Info>
-          <InfoTitle>넷플릭스 클론</InfoTitle>
-          <InfoSubTitle>Netflix clone</InfoSubTitle>
-          <InfoSeats>seats remaining: 7</InfoSeats>
-          <InfoDetail>
-            Join us for our Live Infinity Session in beautiful New York City.
-            This is a 3 day intensive workshop where you'll learn how to become
-            a better version of...
-          </InfoDetail>
-          <InfoMore>
-            <Link to={`${process.env.PUBLIC_URL}/movies`}>Movies</Link>
-          </InfoMore>
-        </Info>
-      </Nav>
-      <Nav>
-        <Thumb />
-        <Info>
-          <InfoTitle>트렐로 클론</InfoTitle>
-          <InfoSubTitle>Trello clone</InfoSubTitle>
-          <InfoSeats>seats remaining: 3</InfoSeats>
-          <InfoDetail>
-            Join us for our Live Infinity Session in beautiful New York City.
-            This is a 3 day intensive workshop where you'll learn how to become
-            a better version of...
-          </InfoDetail>
-          <InfoMore>
-            <Link to={`${process.env.PUBLIC_URL}/trello`}>Trello</Link>
-          </InfoMore>
-        </Info>
-      </Nav>
-      <Nav>
-        <Thumb />
-        <Info>
-          <InfoTitle>Contact</InfoTitle>
-          <InfoSeats> Contact our sales team</InfoSeats>
-          <InfoDetail>
-            If you’d like to know more about my work or process feel free to get
-            in touch. I work from my studio in East London and manage all my
-            projects directly with my clients.
-          </InfoDetail>
-          <InfoMore>
-            <Link to={`${process.env.PUBLIC_URL}/contact`}>Contact</Link>
-          </InfoMore>
-        </Info>
-      </Nav>
-    </NavList>
+    <>
+        <HelmetProvider>
+            <Helmet>
+                <title>rameee: React.Clone project</title>
+            </Helmet>
+        </HelmetProvider>
+        <NavList>
+        <Nav>
+            <Thumb />
+            <Info>
+            <InfoTitle>암호화폐 시세 트래커</InfoTitle>
+            <InfoSubTitle>Coin price tracker</InfoSubTitle>
+            <InfoSeats>seats remaining: 2</InfoSeats>
+            <InfoDetail>
+                Join us for our Live Infinity Session in beautiful New York City.
+                This is a 3 day intensive workshop where you'll learn how to become
+                a better version of...
+            </InfoDetail>
+            <InfoMore>
+                <Link to={`${process.env.PUBLIC_URL}/coins`}>Coins</Link>
+            </InfoMore>
+            </Info>
+        </Nav>
+        <Nav>
+            <Thumb />
+            <Info>
+            <InfoTitle>넷플릭스 클론</InfoTitle>
+            <InfoSubTitle>Netflix clone</InfoSubTitle>
+            <InfoSeats>seats remaining: 7</InfoSeats>
+            <InfoDetail>
+                Join us for our Live Infinity Session in beautiful New York City.
+                This is a 3 day intensive workshop where you'll learn how to become
+                a better version of...
+            </InfoDetail>
+            <InfoMore>
+                <Link to={`${process.env.PUBLIC_URL}/movies`}>Movies</Link>
+            </InfoMore>
+            </Info>
+        </Nav>
+        <Nav>
+            <Thumb />
+            <Info>
+            <InfoTitle>트렐로 클론</InfoTitle>
+            <InfoSubTitle>Trello clone</InfoSubTitle>
+            <InfoSeats>seats remaining: 3</InfoSeats>
+            <InfoDetail>
+                Join us for our Live Infinity Session in beautiful New York City.
+                This is a 3 day intensive workshop where you'll learn how to become
+                a better version of...
+            </InfoDetail>
+            <InfoMore>
+                <Link to={`${process.env.PUBLIC_URL}/trello`}>Trello</Link>
+            </InfoMore>
+            </Info>
+        </Nav>
+        <Nav>
+            <Thumb />
+            <Info>
+            <InfoTitle>Contact</InfoTitle>
+            <InfoSeats> Contact our sales team</InfoSeats>
+            <InfoDetail>
+                If you’d like to know more about my work or process feel free to get
+                in touch. I work from my studio in East London and manage all my
+                projects directly with my clients.
+            </InfoDetail>
+            <InfoMore>
+                <Link to={`${process.env.PUBLIC_URL}/contact`}>Contact</Link>
+            </InfoMore>
+            </Info>
+        </Nav>
+        </NavList>
+    </>
   );
 }
 export default Header;
