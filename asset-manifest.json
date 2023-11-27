@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.js": "/react-master/static/js/main.4ac3fd01.js",
+    "main.js": "/react-master/static/js/main.824bfdf8.js",
     "static/media/home_bg_trello.jpg": "/react-master/static/media/home_bg_trello.96556807d64101bcc11b.jpg",
     "static/media/home_bg_bitcoins.jpg": "/react-master/static/media/home_bg_bitcoins.f7ab5fcc02b975f00b8d.jpg",
     "static/media/home_bg_netflix.jpg": "/react-master/static/media/home_bg_netflix.535c94a70ec555ed110f.jpg",
     "static/media/empty.png": "/react-master/static/media/empty.6f06781acd1aa4321742.png",
     "static/media/home_bg_contact.jpg": "/react-master/static/media/home_bg_contact.a96e0186295937648ebb.jpg",
-    "static/media/Spinner-1s-200px.svg": "/react-master/static/media/Spinner-1s-200px.4205494c3a2bdfc9fa478ff652fc1587.svg",
+    "static/media/Spinner-1s-200px.svg": "/react-master/static/media/Spinner-1s-200px.4cb995fc7ef48fb36396b165c024a3f0.svg",
     "index.html": "/react-master/index.html",
-    "main.4ac3fd01.js.map": "/react-master/static/js/main.4ac3fd01.js.map"
+    "main.824bfdf8.js.map": "/react-master/static/js/main.824bfdf8.js.map"
   },
   "entrypoints": [
-    "static/js/main.4ac3fd01.js"
+    "static/js/main.824bfdf8.js"
   ]
 }
