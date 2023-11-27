@@ -1,11 +1,13 @@
 import { Outlet, useLocation, useParams } from "react-router-dom";
-import { Helmet, HelmetProvider } from 'react-helmet-async';
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import styled from "styled-components";
 import Loading from "../../components/Loading";
-import { Link, useMatch } from "react-router-dom";
+import { Link, useMatch, useNavigate } from "react-router-dom";
 import { useQuery } from "react-query";
 import { fetchCoinInfo, fetchCoinPrice } from "../../api";
-
+import { BackBtn } from "../../components/Components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 const Tabs = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -54,6 +56,7 @@ const Container = styled.div`
   margin: 0 auto;
 `;
 const Header = styled.header`
+  position: relative;
   height: 15vh;
   display: flex;
   justify-content: center;
@@ -121,6 +124,7 @@ function CoinDetail() {
   const { state } = useLocation();
   const priceMatch = useMatch(`coins/:coinId/price`);
   const chartMatch = useMatch(`coins/:coinId/chart`);
+  const navigate = useNavigate();
   // const [loading, setLoading] = useState(true);
   // const [info, setInfo] = useState<IInfoData>();
   // const [priceInfo, setPriceInfo] = useState<IPriceData>();
@@ -145,23 +149,26 @@ function CoinDetail() {
     ["price", coinId],
     () => fetchCoinPrice(coinId!),
     {
-        refetchInterval: 5000,
+      refetchInterval: 5000,
     }
   );
   const loading = infoLoading || priceLoading;
   return (
     <Container>
-        <HelmetProvider>
-            <Helmet>
-                <title>
-                {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
-                </title>
-            </Helmet>
-        </HelmetProvider>
+      <HelmetProvider>
+        <Helmet>
+          <title>
+            {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
+          </title>
+        </Helmet>
+      </HelmetProvider>
       <Header>
         <Title>
           {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
         </Title>
+        <BackBtn onClick={() => navigate(-1)}>
+          <FontAwesomeIcon icon={faArrowLeft} />
+        </BackBtn>
       </Header>
       {loading ? (
         <Loading />
@@ -194,10 +201,14 @@ function CoinDetail() {
           </Overview>
           <Tabs>
             <Tab isActive={chartMatch !== null}>
-              <Link to={`chart`}>Chart</Link>
+              <Link to={`chart`} state={{ coinId }}>
+                Chart
+              </Link>
             </Tab>
             <Tab isActive={priceMatch !== null}>
-              <Link to={`price`}>Price</Link>
+              <Link to={`price`} state={{ coinId }}>
+                Price
+              </Link>
             </Tab>
           </Tabs>
           <Outlet context={{ coinId }} />

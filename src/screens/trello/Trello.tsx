@@ -1,12 +1,14 @@
 import Guide from "../../components/Guide";
-import {Helmet} from "react-helmet";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 
 function Trello() {
   return (
     <>
-    <Helmet>
-                <title>코인</title>
-            </Helmet>
+      <HelmetProvider>
+        <Helmet>
+          <title>코인</title>
+        </Helmet>
+      </HelmetProvider>
       <Guide />
     </>
   );
