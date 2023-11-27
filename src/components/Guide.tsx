@@ -18,8 +18,13 @@ const GuideTit = styled.h1`
 const GuideSub = styled.strong`
   color: ${(props) => props.theme.textColor};
 `;
-const GuideImg = styled.img`
+
+interface IGuideImg {
+  $height?: string;
+}
+const GuideImg = styled.img<IGuideImg>`
   max-width: 350px;
+  height: ${(props) => props.$height ?? "50px"};
   font-weight: 800;
   color: ${(props) => props.theme.accentColor};
 `;
@@ -41,7 +46,7 @@ function Guide() {
       <GuideTit>
         현재 <GuideSub>페이지 준비중</GuideSub> 입니다.
       </GuideTit>
-      <GuideImg src={`${GuideIcon}`} alt="서비스준비중" />
+      <GuideImg $height="361px" src={`${GuideIcon}`} alt="서비스준비중" />
       <GuideTxt>
         방문해주셔서 감사합니다.
         <br />

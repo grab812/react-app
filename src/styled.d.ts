@@ -2,13 +2,16 @@ import "styled-components";
 
 declare module "styled-components" {
   export interface DefaultTheme {
+    mode: string;
+    bgColor: {
+      main: string;
+      accent: string;
+      card: string;
+      nav: string;
+      detail: string;
+    };
     textColor: string;
-    bgColor: string;
-    accentBgColor: string;
     accentColor: string;
-    cardBgColor: string;
     grayColor: string;
-    navBgColor: string;
-    detailBgColor: string;
   }
 }

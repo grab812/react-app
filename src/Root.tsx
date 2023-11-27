@@ -1,5 +1,6 @@
 import { RouterProvider } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
+import { HelmetProvider } from "react-helmet-async";
 import router from "./Router";
 import { darkTheme, lightTheme } from "./theme";
 import GlobalStyle from "./styles/GlobalStyles";
@@ -9,7 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 import { ModeBtn } from "./components/Components";
 function Root() {
-  const [themeState, setThemeState] = useState("light");
+  const [themeState, setThemeState] = useState("dark");
   return (
     <ThemeProvider theme={themeState === "dark" ? darkTheme : lightTheme}>
       <ModeBtn
@@ -30,7 +31,9 @@ function Root() {
         )}
       </ModeBtn>
       <GlobalStyle />
-      <RouterProvider router={router} />
+      <HelmetProvider>
+        <RouterProvider router={router} />
+      </HelmetProvider>
       <ReactQueryDevtools initialIsOpen={true} />
     </ThemeProvider>
   );
