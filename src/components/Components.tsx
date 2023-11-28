@@ -16,12 +16,15 @@ export const ModeBtn = styled.button<IModeBtn>`
   left: ${(props) => props.$left ?? "0"};
   width: ${(props) => props.$width ?? "initial"};
   height: ${(props) => props.$height ?? "initial"};
+  cursor: pointer;
+  z-index: 1000000;
   svg {
     color: ${(props) => props.theme.bgColor.accent};
   }
 `;
 // 뒤로가기버튼
 export const BackBtn = styled.button`
+cursor: pointer;
   width: 30px;
   height: 30px;
   position: absolute;
