@@ -4,8 +4,8 @@ import { useOutletContext } from "react-router";
 import { fetchCoinHistory } from "../../api";
 import ApexChart from "react-apexcharts";
 import { useTheme } from "styled-components";
-import {useRecoilValue} from "recoil";
 import { isDarkAtom } from "../../atoms";
+import { useRecoilValue } from "recoil";
 interface IHistorical {
   time_open: string;
   time_close: string;
@@ -132,7 +132,7 @@ function Chart() {
             background: "transparent",
           },
           theme: {
-            mode: isDark?"dark":"light",
+            mode: isDark ? "dark" : "light",
             palette: "palette5",
             monochrome: {
               enabled: false,

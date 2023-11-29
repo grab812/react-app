@@ -1,4 +1,20 @@
 import styled from "styled-components";
+// 홈버튼
+export const HomeBtn = styled.button`
+  display: block;
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 100px;
+  cursor: pointer;
+  border: none;
+  background: ${(props) => props.theme.accentColor};
+  svg {
+    color: ${(props) => props.theme.bgColor.accent};
+  }
+`;
 // 테마모드버튼
 interface IModeBtn {
   $top?: string;
@@ -24,7 +40,7 @@ export const ModeBtn = styled.button<IModeBtn>`
 `;
 // 뒤로가기버튼
 export const BackBtn = styled.button`
-cursor: pointer;
+  cursor: pointer;
   width: 30px;
   height: 30px;
   position: absolute;

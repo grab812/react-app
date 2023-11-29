@@ -8,13 +8,12 @@ import { ReactQueryDevtools } from "react-query/devtools";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 import { ModeBtn } from "./components/Components";
-import {useRecoilValue,useSetRecoilState} from "recoil";
 import { isDarkAtom } from "./atoms";
+import { useRecoilState } from "recoil";
+
 function Root() {
-  const isDark = useRecoilValue(isDarkAtom);
-  const setDarkAtom = useSetRecoilState(isDarkAtom);
-  const toggleDarkAtoms = () => setDarkAtom((prev) => !prev);
-  console.log(isDark);
+  const [isDark, setIsDark] = useRecoilState(isDarkAtom);
+  const toggleDarkMode = () => setIsDark((curr) => !curr);
   return (
     <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
       <ModeBtn
@@ -22,7 +21,7 @@ function Root() {
         $left="10px"
         $width="30px"
         $height="30px"
-        onClick={toggleDarkAtoms}
+        onClick={toggleDarkMode}
       >
         {isDark ? (
           <FontAwesomeIcon icon={faSun} />

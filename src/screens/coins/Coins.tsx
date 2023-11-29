@@ -3,10 +3,11 @@ import { Helmet } from "react-helmet-async";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Loading from "../../components/Loading";
+import { HomeBtn } from "../../components/Components";
 import { useQuery } from "react-query";
 import { fetchCoins } from "../../api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft, faHouse } from "@fortawesome/free-solid-svg-icons";
 import {
   Container,
   Header,
@@ -40,6 +41,13 @@ function Coins() {
       <Helmet>
         <title>코인</title>
       </Helmet>
+      <HomeBtn
+        onClick={() => {
+          navigate(`${process.env.PUBLIC_URL}`);
+        }}
+      >
+        <FontAwesomeIcon icon={faHouse} />
+      </HomeBtn>
       <Header>
         <Title>코인</Title>
         <BackBtn onClick={() => navigate(-1)}>

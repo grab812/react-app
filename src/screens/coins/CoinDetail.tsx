@@ -6,7 +6,8 @@ import { Link, useMatch, useNavigate } from "react-router-dom";
 import { useQuery } from "react-query";
 import { fetchCoinInfo, fetchCoinPrice } from "../../api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft, faHouse } from "@fortawesome/free-solid-svg-icons";
+
 import {
   BackBtn,
   Tabs,
@@ -17,6 +18,7 @@ import {
   Container,
   Header,
   Title,
+  HomeBtn,
 } from "../../components/Components";
 
 interface IInfoData {
@@ -113,6 +115,13 @@ function CoinDetail() {
           {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
         </title>
       </Helmet>
+      <HomeBtn
+        onClick={() => {
+          navigate(`${process.env.PUBLIC_URL}`);
+        }}
+      >
+        <FontAwesomeIcon icon={faHouse} />
+      </HomeBtn>
       <Header>
         <Title>
           {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
