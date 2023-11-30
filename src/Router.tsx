@@ -13,13 +13,14 @@ import Chart from "./screens/coins/Chart";
 import Trello from "./screens/trello/Trello";
 import Contact from "./screens/Contact";
 import Header from "./components/Header";
+import ToDoList from "./screens/trello/ToDoList";
 const router = createBrowserRouter([
   {
     path: `${process.env.PUBLIC_URL}`,
-    element: <Header/>,
+    element: <Header />,
     errorElement: <NotFound />,
   },
-  
+
   {
     path: `${process.env.PUBLIC_URL}/about`,
     element: <About />,
@@ -48,7 +49,7 @@ const router = createBrowserRouter([
   },
   {
     path: `${process.env.PUBLIC_URL}/trello`,
-    element: <Trello />,
+    element: <ToDoList />,
   },
   {
     path: `${process.env.PUBLIC_URL}/contact`,

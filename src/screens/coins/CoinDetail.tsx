@@ -1,24 +1,24 @@
 import { Outlet, useLocation, useParams } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import styled from "styled-components";
 import Loading from "../../components/Loading";
 import { Link, useMatch, useNavigate } from "react-router-dom";
 import { useQuery } from "react-query";
 import { fetchCoinInfo, fetchCoinPrice } from "../../api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faHouse } from "@fortawesome/free-solid-svg-icons";
-
 import {
+  HomeBtn,
   BackBtn,
+  Container,
+  Header,
+  Title,
+} from "../../components/Common";
+import {
   Tabs,
   Tab,
   Overview,
   OverviewItem,
   Description,
-  Container,
-  Header,
-  Title,
-  HomeBtn,
 } from "../../components/Components";
 
 interface IInfoData {

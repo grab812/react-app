@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import GuideIcon from "../assets/empty.png";
-import { HomeBtn } from "./Components";
+import { HomeBtn } from "./Common";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse } from "@fortawesome/free-solid-svg-icons";
 import { Link, useNavigate } from "react-router-dom";
